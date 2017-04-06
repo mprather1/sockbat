@@ -1,0 +1,28 @@
+{
+  "name": "sockbat",
+  "version": "0.0.1",
+  "main": "build/server.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mprather1/sockbat"
+  },  
+  "scripts": {
+    "start": "PORT=55445 NODE_ENV=development HOSTNAME=shintech.ninja node build/server.js",
+    "dev": "PORT=55445 NODE_ENV=development HOSTNAME=shintech.ninja nodemon build/server.js",
+    "build": "babel -D -d build/ src/",
+    "babel:watch": "babel --watch -D -d build/ src/",
+    "prepublish": "npm run build"
+  },
+  "author": "Michael Prather",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-latest": "^6.24.0"
+  },
+  "dependencies": {
+    "duplex-emitter": "^2.1.2",
+    "reconnect-net": "^1.1.1",
+    "winston-color": "^1.0.0"
+  }
+}
