@@ -1,7 +1,7 @@
 {
   "name": "sockbat",
-  "version": "0.0.2",
-  "main": "build/server.js",
+  "version": "0.0.3",
+  "main": "build/sockbat.js",
   "license": "MIT",
   "repository": {
     "type": "git",
