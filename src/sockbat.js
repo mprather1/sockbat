@@ -3,13 +3,13 @@ import chalk from 'chalk'
 import getEmitter from './getEmitter'
 
 export default function getServer (options) {
-  const {logger, port, packageName} = options
+  const {logger, socketPort, packageName} = options
   
   const server = net.createServer()
   options.server = server
   
   server.on('listening', () => {
-    logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${port}...`)
+    logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${socketPort}...`)
   })
   
   server.on('connection', (socket) => {
