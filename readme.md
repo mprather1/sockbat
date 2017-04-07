@@ -10,19 +10,20 @@ Server will listen on the specified port and handles connections.
   
 ## Usage
 
-Accepts a JavScript object as an argument:
+Accepts a JavaScript object as an argument:
 
 	const options = {
-	  socketPort: process.env.SOCKET_PORT,
+	  port: process.env.PORT,
 	  logger: winston,
 	  hostname: process.env.HOSTNAME,
 	  packageName: pkg.name,
 	}
 	
+	sockbat(options)
 	const {server} = options
 	
-	server.listen(socketPort, hostname)
+	server.listen(port, hostname)
 
 <div class="footer">
-  readme v0.0.3
+  readme v0.0.5
 </div>
