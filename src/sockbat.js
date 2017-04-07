@@ -16,17 +16,19 @@ export default function getServer (options) {
     handleConnection(socket, options)
   })
   
-  return options
-}
+  function handleConnection (socket, options) {
+    const {logger} = options
+    
+    const emitter = getEmitter(socket, options)
+    
+    socket.on('error', (err) => {
+      handleError(err, logger)
+    })
 
-function handleConnection (socket, options) {
-  const {logger} = options
+    options.emitter = emitter
+  }
   
-  getEmitter(socket, options)
-
-  socket.on('error', (err) => {
-    handleError(err, logger)
-  })
+  return options
 }
 
 function handleError (err, logger) {
