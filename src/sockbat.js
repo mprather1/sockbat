@@ -2,11 +2,16 @@ import net from 'net'
 import chalk from 'chalk'
 import getEmitter from './getEmitter'
 
-export default function getServer (options) {
+export default class Sockbat {
+  constructor (options) {
+    const server = net.createServer()
+    configServer(options, server)
+    return server
+  }
+}
+
+function configServer (options, server) {
   const {logger, port, packageName} = options
-  
-  const server = net.createServer()
-  options.server = server
   
   server.on('listening', () => {
     logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${port}...`)
@@ -20,15 +25,18 @@ export default function getServer (options) {
     const {logger} = options
     
     const emitter = getEmitter(socket, options)
-    
+
     socket.on('error', (err) => {
       handleError(err, logger)
     })
-
-    options.emitter = emitter
+    emitter.on('error', (err) => {
+      handleEmitterError(err, logger)
+    })
   }
   
-  return options
+  function handleEmitterError (err, logger) {
+    logger.error('error:', err.message)
+  }
 }
 
 function handleError (err, logger) {

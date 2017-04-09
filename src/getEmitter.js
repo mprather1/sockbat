@@ -14,6 +14,8 @@ export default function getEmitter (socket, options) {
       handleClose(socket, logger, data)
     })    
   })
+  
+  return emitter
 }
 
 function handleClose (socket, logger, packageName) {
