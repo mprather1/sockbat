@@ -32,6 +32,7 @@ Server will listen on the specified port and handles connections.
 ## Dependencies
 	* duplex-emitter
 	* chalk
+	* winston-color
 
 <div class="footer">
   readme v1.0.0
